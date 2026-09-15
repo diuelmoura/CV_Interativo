@@ -1,0 +1,813 @@
+/* Estilos do currículo: base, componentes e adaptações para telas menores. */
+
+/* 1. Cores do tema. As variáveis abaixo permitem mudar as cores em um só lugar. */
+
+:root {
+  color-scheme: dark;
+  --text-primary: #edf5ff;
+  --background-page: #08182e;
+  --background-avatar: #102743;
+  --color-blue: #2463eb;
+  --background-header: #061124;
+  --color-purple: #b69aff;
+  --color-green: #69e7b0;
+  --border-color: rgba(115, 171, 244, .24);
+  --text-muted: #aabed8;
+  --background-card: #10233d;
+}
+
+/* 2. Base: inclui bordas e preenchimento no tamanho de cada elemento. */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  color: var(--text-primary);
+  padding: 32px 16px;
+  background: #020b18;
+  isolation: isolate;
+}
+
+/* Imagem de fundo original, sem filtro de cor. A camada fixa fica atrás da página.
+A opacidade mantém o fundo discreto; pointer-events permite clicar no conteúdo. */
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: url('../assets/plano_de_fundo_v3.jpg') center / cover no-repeat;
+  opacity: .55;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+a {
+  font: inherit;
+}
+
+/* 3. Container central: limita a largura do currículo e mantém as bordas arredondadas. */
+
+.page {
+  width: min(100%, 980px);
+  margin: 0 auto;
+  background: var(--background-page);
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(89, 190, 255, .35);
+  box-shadow: 0 22px 65px rgba(0, 0, 0, .65);
+}
+
+/* 4. Barra superior e botões de idioma. O JavaScript aplica a classe active ao idioma escolhido. */
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 22px;
+  background: var(--background-header);
+  color: var(--text-primary);
+}
+
+.topbar small {
+  opacity: .82;
+}
+
+.lang-switch {
+  display: flex;
+  gap: 6px;
+}
+
+.lang-btn {
+  border: 1px solid rgba(255,255,255,.25);
+  background: transparent;
+  border-radius: 999px;
+  padding: 6px 10px;
+  cursor: pointer;
+  font-size: 12px;
+  color: var(--text-primary);
+}
+
+.lang-btn.active {
+  background: #2463eb;
+  color: #fff;
+  border-color: #6aaaff;
+}
+
+/* 5. Apresentação: foto e informações em duas colunas.
+O gradiente escurece a capa para facilitar a leitura dos textos, sem mudar a imagem. */
+
+.hero {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 28px;
+  align-items: center;
+  padding: 48px 36px 42px;
+  background: linear-gradient(90deg, rgba(3, 14, 33, .68), rgba(3, 14, 33, .88)), url('../assets/plano_de_fundo_v2.jpg') center / cover no-repeat;
+  border-bottom: 1px solid #357cc4;
+}
+
+.hero h1 {
+  color: #ffffff;
+}
+
+
+.avatar-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+/* A moldura faz o recorte circular. A foto usa 90% da largura para caber cabeça e barba. */
+
+.avatar-frame {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 5px solid var(--background-avatar);
+  outline: 2px solid #168ccc;
+  outline-offset: 4px;
+  background: var(--background-avatar);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, .25);
+}
+
+/* Centraliza a foto na moldura. height: auto preserva a proporção original. */
+
+.avatar-frame .avatar {
+  position: absolute;
+  width: 90%;
+  height: auto;
+  max-width: none;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.eyebrow {
+  margin: 0 0 7px;
+  color: var(--color-green);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 0 0 8px;
+  font-family: 'Fraunces',serif;
+  font-size: clamp(30px,4vw,46px);
+  line-height: 1.05;
+}
+
+.role {
+  margin: 0 0 16px;
+  font-size: 15px;
+  line-height: 1.55;
+  font-weight: 600;
+  color: #b8dcff;
+}
+
+.bio {
+  margin: 0;
+  max-width: 700px;
+  line-height: 1.72;
+  font-size: 15px;
+  color: #e0eafa;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 20px;
+}
+
+/* 6. Links com aparência de botão e seus estados ao passar o mouse. */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 40px;
+  padding: 9px 14px;
+  border-radius: 9px;
+  text-decoration: none;
+  border: 1px solid var(--border-color);
+  font-weight: 600;
+  font-size: 13px;
+  transition: transform .16s ease, box-shadow .16s ease, background .16s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(28,43,43,.12);
+}
+
+.btn-primary {
+  border-color: var(--color-blue);
+  background: #2463eb;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: #1e50c5;
+}
+
+.btn-outline {
+  background: rgba(10, 31, 59, .88);
+  color: #edf5ff;
+}
+
+.btn-outline:hover {
+  background: #203d65;
+}
+
+/* 7. Resumo profissional em três colunas. */
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3,minmax(0,1fr));
+  gap: 10px;
+  padding: 24px 36px 28px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.stat {
+  padding: 14px 16px;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  text-align: center;
+  background: #10233d;
+}
+
+.stat strong {
+  display: block;
+  font-family: 'Fraunces',serif;
+  font-size: 22px;
+  color: #79c8ff;
+}
+
+.stat:nth-child(2) strong {
+  color: #b69aff;
+}
+
+.stat:nth-child(3) strong {
+  color: #69e7b0;
+}
+
+.stat span {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* 8. Navegação entre seções. sticky mantém as abas no topo durante a rolagem. */
+
+.tabs {
+  position: sticky;
+  top: 0;
+  z-index: 15;
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  border-bottom: 1px solid var(--border-color);
+  backdrop-filter: blur(8px);
+  background: rgba(8, 24, 46, .97);
+}
+
+.tab {
+  border: 0;
+  border-bottom: 3px solid transparent;
+  background: none;
+  padding: 14px 10px 12px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  color: #aabed8;
+}
+
+.tab.active {
+  color: #83ccff;
+  border-bottom-color: #a68aff;
+}
+
+/* O JavaScript adiciona active somente ao painel selecionado para exibi-lo. */
+
+.panel {
+  display: none;
+}
+
+.panel.active {
+  display: block;
+}
+
+.section {
+  padding: 28px 36px 34px;
+}
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: flex-end;
+  margin-bottom: 18px;
+}
+
+.section-head h2 {
+  margin: 0;
+  font-family: 'Fraunces',serif;
+  font-size: 25px;
+}
+
+.section-head p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 13px;
+  line-height: 1.5;
+  max-width: 520px;
+}
+
+/* 9. Linha do tempo da carreira. O pseudo-elemento desenha a linha vertical. */
+
+.timeline {
+  position: relative;
+  margin-left: 8px;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 8px;
+  top: 7px;
+  bottom: 7px;
+  width: 1px;
+  background: var(--border-color);
+}
+
+.timeline-item {
+  position: relative;
+  padding-left: 36px;
+  padding-bottom: 24px;
+}
+
+.timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: 2px;
+  top: 4px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--background-page);
+  border: 3px solid var(--color-purple);
+}
+
+.timeline-year {
+  font-size: 12px;
+  color: var(--color-purple);
+  font-weight: 700;
+}
+
+.timeline-item h3 {
+  margin: 3px 0 5px;
+  font-size: 17px;
+}
+
+.timeline-item p {
+  margin: 0;
+  line-height: 1.65;
+  font-size: 13.5px;
+  color: #b9cbe2;
+}
+
+.mini-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 9px;
+}
+
+.mini-tag {
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  padding: 4px 8px;
+  font-size: 10.5px;
+  background: #142e4c;
+  color: #a4d8ff;
+}
+
+/* 10. Cards de cases e projetos. As grades têm duas colunas no computador. */
+
+.case-grid {
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 14px;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 14px;
+}
+
+.card-button {
+  width: 100%;
+  text-align: left;
+  border: 1px solid var(--border-color);
+  background: var(--background-card);
+  border-radius: 14px;
+  padding: 0;
+  overflow: hidden;
+  box-shadow: 0 8px 18px rgba(28,43,43,.045);
+  cursor: pointer;
+}
+
+.project-card {
+  width: 100%;
+  text-align: left;
+  border: 1px solid var(--border-color);
+  background: var(--background-card);
+  border-radius: 14px;
+  padding: 0;
+  overflow: hidden;
+  box-shadow: 0 8px 18px rgba(28,43,43,.045);
+}
+
+.card-button:hover {
+  border-color: #a68aff;
+}
+
+.project-card:hover {
+  border-color: #a68aff;
+}
+
+.visual {
+  min-height: 116px;
+  display: flex;
+  align-items: flex-end;
+  padding: 18px;
+  background: linear-gradient(135deg, #104f91, #243c80 65%, #54348a);
+  color: #edf5ff;
+}
+
+.visual .icon {
+  font-size: 32px;
+  line-height: 1;
+}
+
+.visual .visual-label {
+  margin-left: auto;
+  font-size: 10px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  opacity: .75;
+}
+
+.card-body {
+  padding: 15px 16px 16px;
+}
+
+.status {
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  color: #69e7b0;
+}
+
+.card-body h3 {
+  font-family: 'Fraunces',serif;
+  margin: 4px 0 7px;
+  font-size: 18px;
+}
+
+.card-body p {
+  margin: 0;
+  line-height: 1.55;
+  font-size: 12.8px;
+  color: #b9cbe2;
+}
+
+.project-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 12px;
+}
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 2px;
+  color: #69e7b0;
+}
+
+/* 11. Grupos de habilidades e etiquetas de tecnologias. */
+
+.skill-groups {
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 14px;
+}
+
+.skill-group {
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  padding: 16px;
+  background: #10233d;
+}
+
+.skill-group h3 {
+  margin: 0 0 11px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  color: #b69aff;
+}
+
+.skill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.skill-chip {
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  padding: 7px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #b8dcff;
+  background: #0a1b32;
+}
+
+.skill-note {
+  margin: 16px 0 0;
+  color: var(--text-muted);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+/* 12. Rodapé com links de contato. */
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 22px 36px;
+  background: var(--background-header);
+  color: var(--text-primary);
+}
+
+.footer p {
+  margin: 0;
+  font-size: 12px;
+  opacity: .82;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.footer a {
+  font-size: 12px;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,.25);
+  color: var(--text-primary);
+}
+
+/* 13. Janela de detalhes de um case. A classe open, controlada pelo JavaScript, abre a janela. */
+
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  background: rgba(2, 8, 22, .86);
+}
+
+.modal-overlay.open {
+  display: flex;
+}
+
+.modal {
+  width: min(100%,640px);
+  max-height: min(88vh,760px);
+  overflow: auto;
+  background: var(--background-page);
+  border-radius: 16px;
+  box-shadow: 0 25px 60px rgba(0,0,0,.4);
+}
+
+.modal-header {
+  padding: 22px 24px 10px;
+}
+
+.modal-header .status {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-family: 'Fraunces',serif;
+  font-size: 25px;
+}
+
+.modal-body {
+  padding: 0 24px 20px;
+}
+
+.case-block {
+  padding: 14px 0;
+  border-top: 1px solid var(--border-color);
+}
+
+.case-block h4 {
+  margin: 0 0 6px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--color-purple);
+}
+
+.case-block p {
+  margin: 0;
+  line-height: 1.68;
+  font-size: 13.5px;
+  color: #b9cbe2;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 24px 22px;
+}
+
+.modal-close {
+  border: 1px solid var(--border-color);
+  background: var(--background-card);
+  border-radius: 8px;
+  padding: 8px 13px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* 14. Acessibilidade: oculta visualmente um texto, mantendo-o disponível a leitores de tela. */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Destaca links e botões ao navegar pelo teclado. */
+
+:is(a, button):focus-visible {
+  outline: 2px solid #69e7b0;
+  outline-offset: 4px;
+}
+
+/* Telas de até 760px: adapta o layout sem alterar o conteúdo. */
+
+@media (max-width: 760px) {
+  body {
+    padding: 12px;
+  }
+
+  .page {
+    min-height: 100vh;
+    border-radius: 14px;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    text-align: center;
+    background-position: center;
+    padding: 32px 22px;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+
+  .stats {
+    padding: 24px 22px 24px;
+  }
+
+  .section {
+    padding: 24px 22px 30px;
+  }
+
+  .section-head {
+    display: block;
+  }
+
+  .section-head p {
+    margin-top: 6px;
+  }
+
+  .case-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .skill-groups {
+    grid-template-columns: 1fr;
+  }
+
+  .footer {
+    padding: 20px 22px;
+    display: block;
+    text-align: center;
+  }
+
+  .footer-links {
+    justify-content: center;
+    margin-top: 12px;
+  }
+}
+
+/* Telas de até 520px: adapta o layout sem alterar o conteúdo. */
+
+@media (max-width: 520px) {
+  .topbar {
+    padding: 12px 16px;
+  }
+
+  .topbar small {
+    font-size: 10.5px;
+  }
+
+  .role {
+    font-size: 13.5px;
+  }
+
+  .bio {
+    font-size: 14px;
+  }
+
+  .stats {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 7px;
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .stat {
+    padding: 11px 8px;
+  }
+
+  .stat strong {
+    font-size: 18px;
+  }
+
+  .stat span {
+    font-size: 10px;
+  }
+
+  .tab {
+    font-size: 11px;
+    padding: 12px 4px 10px;
+  }
+
+  .avatar-frame {
+    width: 122px;
+    height: 122px;
+  }
+}

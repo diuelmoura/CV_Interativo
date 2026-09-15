@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <!-- Configuração do documento: acentos, adaptação à tela e descrição da página. -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CV interativo e portfólio profissional de Diuel Moura, Software Developer e Systems Analyst com mais de 4 anos em P&D de tecnologia.">
+  <meta name="theme-color" content="#08182e">
+
+  <!-- Para uma prévia perfeita no LinkedIn, troque os valores abaixo pela URL final do GitHub Pages. -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Diuel Moura — Interactive CV & Portfolio">
+  <meta property="og:description" content="Software Developer | Systems Analyst | 4+ years in Technology R&D">
+  <meta property="og:image" content="assets/foto_de_perfil.jpg">
+
+  <!-- Estilos da página; os links seguintes carregam as fontes usadas nos textos. -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <title>Diuel Moura — CV Interativo</title>
+</head>
+
+<body>
+  <main class="page">
+    <!-- Idioma: data-lang indica ao JavaScript qual tradução carregar (pt ou en). -->
+    <div class="topbar">
+      <small data-i18n="topNote">CV Interativo · Portfólio Profissional</small>
+      <div class="lang-switch" aria-label="Idioma / Language">
+        <button class="lang-btn active" type="button" data-lang="pt">PT</button>
+        <button class="lang-btn" type="button" data-lang="en">EN</button>
+      </div>
+    </div>
+ 
+    <!-- Apresentação. A imagem de capa é definida no CSS da classe hero. -->
+    <section class="hero" aria-labelledby="profile-name">
+      <div class="avatar-wrap">
+        <!-- A moldura circular e o enquadramento da foto são controlados no CSS. -->
+        <div class="avatar-frame">
+          <img class="avatar" src="assets/foto_de_perfil.jpg" alt="Foto de perfil de Diuel Moura">
+        </div>
+      </div>
+
+      <div>
+        <!-- data-i18n corresponde a uma chave de tradução no objeto content do JavaScript. -->
+        <p class="eyebrow" data-i18n="eyebrow">Software · Produto · P&amp;D</p>
+        <h1 id="profile-name">Diuel da Silva Moura</h1>
+        <p class="role">Software Developer | Systems Analyst | Angular · Node.js · JavaScript | Java | C | C++ | +4 years in Technology R&amp;D</p>
+        <p class="bio" data-i18n="bio">
+          Profissional de tecnologia com experiência em desenvolvimento de software, análise de problemas em Android, automação, conectividade e validação de funcionalidades para produtos utilizados na América Latina. Este CV interativo reúne minha trajetória, cases reais, projetos e principais tecnologias em um único lugar.
+        </p>
+
+        <div class="hero-actions">
+          <!-- TODO: troque pelo seu LinkedIn final, se necessário -->
+          <a class="btn btn-primary" href="https://www.linkedin.com/in/diuel-moura-672670164/" target="_blank" rel="noreferrer" data-i18n="linkedinBtn">LinkedIn</a>
+          <a class="btn btn-outline" href="https://github.com/diuelmoura" target="_blank" rel="noreferrer">GitHub</a>
+          <!-- TODO: substitua pelo seu e-mail real -->
+          <a class="btn btn-outline" href="mailto:SEU_EMAIL_AQUI" data-i18n="emailBtn">E-mail</a>
+          <!-- TODO: coloque seu PDF em assets/Diuel_Moura_CV.pdf -->
+          <a class="btn btn-outline" href="assets/Diuel_Moura_CV.pdf" download data-i18n="downloadBtn">Baixar CV (PDF)</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Números que resumem a experiência profissional. -->
+    <section class="stats" aria-label="Resumo profissional">
+      <div class="stat"><strong>4+</strong><span data-i18n="yearsStat">anos em tecnologia</span></div>
+      <div class="stat"><strong>2</strong><span data-i18n="teamsStat">times de P&amp;D</span></div>
+      <div class="stat"><strong>4</strong><span data-i18n="casesStat">cases em destaque</span></div>
+    </section>
+
+    <!-- Cada data-tab corresponde ao final do id de um painel, como career e panel-career. -->
+    <nav class="tabs" aria-label="Seções do currículo">
+      <button class="tab active" type="button" data-tab="career" data-i18n="tabCareer">Carreira</button>
+      <button class="tab" type="button" data-tab="cases" data-i18n="tabCases">Cases</button>
+      <button class="tab" type="button" data-tab="projects" data-i18n="tabProjects">Projetos</button>
+      <button class="tab" type="button" data-tab="skills" data-i18n="tabSkills">Skills</button>
+    </nav>
+
+    <!-- A classe active torna este painel visível ao abrir a página. -->
+    <section class="panel active" id="panel-career">
+      <div class="section">
+        <div class="section-head">
+          <div><h2 data-i18n="careerTitle">Trajetória profissional</h2></div>
+          <p data-i18n="careerSubtitle">Uma visão rápida da minha formação e das frentes em que atuei.</p>
+        </div>
+        <!-- O JavaScript preenche este container com os dados da carreira. -->
+        <div class="timeline" id="careerTimeline"></div>
+      </div>
+    </section>
+
+    <section class="panel" id="panel-cases">
+      <div class="section">
+        <div class="section-head">
+          <div><h2 data-i18n="casesTitle">Cases reais</h2></div>
+          <p data-i18n="casesSubtitle">Situações profissionais resumidas em desafio, atuação, tecnologias e resultado.</p>
+        </div>
+        <!-- Cards criados pelo JavaScript; cada um abre uma janela com os detalhes do case. -->
+        <div class="case-grid" id="caseGrid"></div>
+      </div>
+    </section>
+
+    <section class="panel" id="panel-projects">
+      <div class="section">
+        <div class="section-head">
+          <div><h2 data-i18n="projectsTitle">Projetos</h2></div>
+          <p data-i18n="projectsSubtitle">Projetos concluídos e iniciativas em evolução para demonstrar prática e aprendizado contínuo.</p>
+        </div>
+        <!-- O JavaScript monta os projetos e seus links a partir do idioma selecionado. -->
+        <div class="project-grid" id="projectGrid"></div>
+      </div>
+    </section>
+
+    <section class="panel" id="panel-skills">
+      <div class="section">
+        <div class="section-head">
+          <div><h2 data-i18n="skillsTitle">Skills &amp; ferramentas</h2></div>
+          <p data-i18n="skillsSubtitle">Sem porcentagens artificiais: apenas tecnologias e áreas que fazem parte da minha experiência ou prática.</p>
+        </div>
+        <!-- Grupos de habilidades preenchidos pelo JavaScript. -->
+        <div class="skill-groups" id="skillGroups"></div>
+        <p class="skill-note" data-i18n="skillsNote">A profundidade varia por contexto de projeto; em entrevistas, posso detalhar onde e como utilizei cada tecnologia.</p>
+      </div>
+    </section>
+
+    <!-- Rodapé com os links de contato. -->
+    <footer class="footer">
+      <p data-i18n="footerText">Obrigado pela visita. Este site também faz parte do meu portfólio.</p>
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/diuel-moura-672670164/" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a href="https://github.com/diuelmoura" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="mailto:SEU_EMAIL_AQUI" data-i18n="emailBtn">E-mail</a>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Janela de detalhes. Começa oculta; o JavaScript preenche e exibe ao clicar em um case. -->
+  <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal">
+      <div class="modal-header">
+        <span class="status" id="modalStatus"></span>
+        <h3 id="modalTitle"></h3>
+      </div>
+      <div class="modal-body" id="modalBody"></div>
+      <div class="modal-footer">
+        <button class="modal-close" id="modalClose" type="button" data-i18n="closeBtn">Fechar</button>
+      </div>
+    </div>
+  </div>
+  <!-- Carrega o JavaScript após o HTML para que os elementos já existam ao executar o código. -->
+  <script src="js/script.js"></script>
+</body>
+</html>
