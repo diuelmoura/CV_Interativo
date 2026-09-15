@@ -4,9 +4,11 @@ const content = {
   pt: {
     ui: {
       topNote: 'CV Interativo · Portfólio profissional',
-      eyebrow: 'Software · Produto · P&D',
-      bio: 'Profissional de tecnologia com experiência em desenvolvimento de software, análise de problemas em Android, automação, conectividade e validação de funcionalidades para produtos utilizados na América Latina. Este CV interativo reúne minha trajetória, cases reais, projetos e principais tecnologias em um único lugar.',
+      availability: 'Aberto a oportunidades', experienceLine: '4+ anos em P&D de Tecnologia',
+      aboutEyebrow: 'Sobre mim', aboutTitle: 'Tecnologia com curiosidade, método e visão de produto.',
+      bio: 'Sou desenvolvedor e analista de sistemas com experiência em P&D, desenvolvimento de software e investigação técnica no ecossistema Android e telecom. Gosto de transformar problemas complexos em soluções claras, confiáveis e bem documentadas — sempre aprendendo e compartilhando o que descubro.',
       linkedinBtn: 'LinkedIn', emailBtn: 'E-mail', downloadBtn: 'Baixar CV (PDF)',
+      githubProjectsBtn: 'Ver meus projetos no GitHub',
       yearsStat: 'anos em tecnologia', teamsStat: 'times de P&D', casesStat: 'cases em destaque',
       tabCareer: 'Carreira', tabCases: 'Cases', tabProjects: 'Projetos', tabSkills: 'Skills',
       careerTitle: 'Trajetória profissional', careerSubtitle: 'Uma visão rápida da minha formação e das frentes em que atuei.',
@@ -91,19 +93,19 @@ const content = {
         icon:'❌⭕', status:'Finalizado', title:'Jogo da Velha',
         desc:'Projeto concluído e publicado no GitHub como parte do meu portfólio de desenvolvimento.',
         tags:['Projeto pessoal','GitHub'],
-        url:'https://github.com/diuelmoura/Jogo_da_Velha', linkType:'code'
+        url:'https://github.com/diuelmoura/Jogo_da_Velha', image:'assets/jogo_da_velha.jpg', imageFit:'contain', linkType:'code'
       },
       {
         icon:'🧑‍💻', status:'Em evolução', title:'CV Interativo',
         desc:'A própria página que você está visitando: um currículo web responsivo, bilíngue e pensado para compartilhamento direto pelo LinkedIn e GitHub Pages.',
         tags:['HTML','CSS','JavaScript','Responsive','GitHub Pages'],
-        url:'https://github.com/diuelmoura', linkType:'profile'
+        url:'https://github.com/diuelmoura/CV_interativo', image:'assets/linkedin-preview-v3.png', linkType:'code'
       },
       {
         icon:'🧠', status:'Em andamento', title:'Desafios de lógica e Live Coding',
         desc:'Coleção em evolução de exercícios de algoritmos e estruturas de dados para prática de entrevistas técnicas.',
         tags:['Java','Algorithms','Big-O','GitHub'],
-        url:'https://github.com/diuelmoura', linkType:'profile'
+        url:'https://github.com/diuelmoura/Desafios_Live_Code', image:'assets/desafios_de_logica.jpg', linkType:'code'
       }
     ],
     // Habilidades organizadas por grupo.
@@ -120,9 +122,11 @@ const content = {
   en: {
     ui: {
       topNote: 'Interactive CV · Professional Portfolio',
-      eyebrow: 'Software · Product · R&D',
-      bio: 'Technology professional with experience in software development, Android issue investigation, automation, connectivity, and feature validation for products used across Latin America. This interactive CV brings together my career, real-world cases, projects, and main technologies in one place.',
+      availability: 'Available for opportunities', experienceLine: '4+ years in Technology R&D',
+      aboutEyebrow: 'About me', aboutTitle: 'Technology with curiosity, method, and product thinking.',
+      bio: 'I am a software developer and systems analyst with experience in R&D, software development, and technical investigation across Android and telecom. I enjoy turning complex problems into clear, reliable, well-documented solutions — while continuously learning and sharing what I discover.',
       linkedinBtn: 'LinkedIn', emailBtn: 'Email', downloadBtn: 'Download CV (PDF)',
+      githubProjectsBtn: 'View my GitHub projects',
       yearsStat: 'years in technology', teamsStat: 'R&D teams', casesStat: 'featured cases',
       tabCareer: 'Career', tabCases: 'Cases', tabProjects: 'Projects', tabSkills: 'Skills',
       careerTitle: 'Professional journey', careerSubtitle: 'A quick view of my education and the areas where I have worked.',
@@ -196,19 +200,19 @@ const content = {
         icon:'❌⭕', status:'Completed', title:'Tic-Tac-Toe',
         desc:'Completed project published on GitHub as part of my development portfolio.',
         tags:['Personal project','GitHub'],
-        url:'https://github.com/diuelmoura/Jogo_da_Velha', linkType:'code'
+        url:'https://github.com/diuelmoura/Jogo_da_Velha', image:'assets/jogo_da_velha.jpg', imageFit:'contain', linkType:'code'
       },
       {
         icon:'🧑‍💻', status:'Evolving', title:'Interactive CV',
         desc:'The page you are visiting: a responsive, bilingual web CV designed for direct sharing through LinkedIn and GitHub Pages.',
         tags:['HTML','CSS','JavaScript','Responsive','GitHub Pages'],
-        url:'https://github.com/diuelmoura', linkType:'profile'
+        url:'https://github.com/diuelmoura/CV_interativo', image:'assets/tela_1.jpg', linkType:'code'
       },
       {
         icon:'🧠', status:'In progress', title:'Logic & Live Coding Challenges',
         desc:'An evolving collection of algorithms and data-structure exercises for technical interview practice.',
         tags:['Java','Algorithms','Big-O','GitHub'],
-        url:'https://github.com/diuelmoura', linkType:'profile'
+        url:'https://github.com/diuelmoura/Desafios_Live_Code', image:'https://opengraph.githubassets.com/1/diuelmoura/Desafios_Live_Code', linkType:'code'
       }
     ],
     skills: [
@@ -293,7 +297,8 @@ function renderProjects(){
     const linkText = item.linkType === 'code' ? ui.viewCode : ui.githubProfile;
     return `
       <article class="project-card">
-        <div class="visual">
+        <div class="visual project-visual${item.imageFit === 'contain' ? ' project-visual--contain' : ''}">
+          <img src="${item.image}" alt="Prévia do projeto ${item.title}" loading="lazy">
           <span class="icon" aria-hidden="true">${item.icon}</span>
           <span class="visual-label">${item.status}</span>
         </div>
