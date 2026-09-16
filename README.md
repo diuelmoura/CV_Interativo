@@ -1,15 +1,24 @@
 ﻿# 👨‍💻 CV Interativo — Diuel Moura
 
+[![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-Acessar_CV_Interativo-blue)](https://diuelmoura.github.io/CV_Interativo/)
+
+## 🚀 Sobre o projeto
+
 Este projeto nasceu da ideia de transformar meu currículo tradicional em uma
 experiência digital e interativa.
 
-Em vez de apresentar apenas um documento PDF, o CV Interativo permite navegar
-pela minha trajetória profissional, cases técnicos, projetos e principais
-tecnologias utilizadas ao longo da minha carreira.
+Em vez de apresentar apenas um documento em PDF, o **CV Interativo** permite
+navegar pela minha trajetória profissional, experiências em P&D, cases técnicos,
+projetos e principais tecnologias com as quais já trabalhei.
 
-## 🌐 Live Demo
+O objetivo é oferecer a recrutadores, profissionais de tecnologia e pessoas da
+minha rede uma forma mais dinâmica de conhecer meu perfil profissional.
+
+🌐 **Acesse a versão publicada:**
 
 👉 https://diuelmoura.github.io/CV_Interativo/
+
+---
 
 ## 👨‍💻 Sobre mim
 
