@@ -254,9 +254,8 @@ h1 {
 }
 
 .btn-primary {
-  border-color: var(--color-blue);
-  background: #2463eb;
-  color: #fff;
+  background: rgba(10, 31, 59, .88);
+  color: #edf5ff;
 }
 
 .btn-primary:hover {
@@ -269,16 +268,15 @@ h1 {
 }
 
 .btn-outline:hover {
-  background: #203d65;
+  background: #1e50c5;
 }
 
 .btn-github {
-  background: #edf5ff;
-  border-color: #edf5ff;
-  color: #08182e;
+  background: rgba(10, 31, 59, .88);
+  color: #edf5ff;
 }
 
-.btn-github:hover { background: #cfe8ff; }
+.btn-github:hover { background: #1e50c5; }
 
 .about {
   padding: 28px 36px;

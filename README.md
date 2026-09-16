@@ -1,84 +1,56 @@
-﻿# CV Interativo — Diuel Moura
+﻿# 👨‍💻 CV Interativo — Diuel Moura
 
-Currículo interativo e portfólio profissional desenvolvido em HTML, CSS e JavaScript puro, com versões em português e inglês e estrutura preparada para publicação no GitHub Pages.
+Este projeto nasceu da ideia de transformar meu currículo tradicional em uma
+experiência digital e interativa.
 
-## Recursos
+Em vez de apresentar apenas um documento PDF, o CV Interativo permite navegar
+pela minha trajetória profissional, cases técnicos, projetos e principais
+tecnologias utilizadas ao longo da minha carreira.
 
-- Layout responsivo para desktop e celular, com foto de perfil e imagens de fundo.
-- Alternância entre português e inglês (PT / EN).
-- Apresentação profissional, seção Sobre mim e indicação de disponibilidade.
-- Abas de Carreira, Cases, Projetos e Skills.
-- Cases com janela de detalhes: desafio, atuação, tecnologias e resultado.
-- Cards de projetos com thumbnail, ícone, status, tecnologias e link para o GitHub.
-- Links para LinkedIn, GitHub, e-mail e download do currículo em PDF.
-- Metadados Open Graph e Twitter Card para prévias ao compartilhar o site.
-- Sem framework, instalação de dependências ou etapa de build.
+## 🌐 Live Demo
 
-## Estrutura de pastas
+👉 https://diuelmoura.github.io/CV_Interativo/
 
-```text
-CV_Interativo_V2/
-├── index.html                        # Estrutura da página e metadados
-├── README.md                         # Documentação do projeto
-├── css/
-│   └── style.css                     # Layout, cores e responsividade
-├── js/
-│   └── script.js                     # Conteúdo PT/EN e interações
-└── assets/
-    ├── CV_Diuel_Moura_Atualizado.pdf  # Currículo para download
-    ├── foto_de_perfil.jpg            # Foto exibida no perfil
-    ├── jogo_da_velha.jpg             # Thumbnail do Jogo da Velha
-    ├── desafios_de_logica.jpg        # Thumbnail de desafios (PT)
-    ├── linkedin-preview-v3.png       # Prévia social e thumbnail do CV (PT)
-    ├── tela_1.jpg                    # Thumbnail do CV (EN)
-    ├── plano_de_fundo_v3.jpg         # Fundo da página
-    ├── plano_de_fundo_v2.jpg         # Fundo da apresentação (.hero)
-    ├── plano_de_fundo.png
-    ├── plano_de_fundo_v1.jpg
-    ├── plano_de_fundo_v2.png
-    ├── capa_perfil.png
-    └── capa_perfil_v1.png
-```
+## 👨‍💻 Sobre mim
 
-As imagens sem descrição estão disponíveis em `assets`, mas não são referenciadas atualmente pelo HTML, CSS ou JavaScript. O arquivo local `debug.log` não faz parte dos arquivos necessários ao site.
+Software Developer | Systems Analyst
 
-## Como visualizar localmente
+Angular · Node.js · JavaScript | Java | C | C++
 
-Abra `index.html` no navegador. Não é necessário instalar dependências ou compilar o projeto.
++4 years in Technology R&D
 
-As fontes do Google Fonts e a thumbnail dos desafios na versão em inglês, carregada pelo serviço Open Graph do GitHub, dependem de acesso à internet.
+Minha experiência profissional envolve desenvolvimento de software,
+ecossistema Android, investigação de problemas através de logs,
+automação, conectividade, homologação de tecnologias e trabalho
+em ambientes de Pesquisa & Desenvolvimento.
 
-## Onde editar
+## 🚀 Tecnologias do projeto
 
-| Conteúdo | Arquivo / local |
-| --- | --- |
-| Estrutura da página, contatos e link do PDF | `index.html` |
-| Título, descrição, URL pública e prévias de compartilhamento | `<head>` de `index.html` |
-| Textos e dados em português e inglês | `content.pt` e `content.en` em `js/script.js` |
-| Trajetória, cases, projetos e habilidades | Listas `career`, `cases`, `projects` e `skills` de cada idioma |
-| HTML dos cards de projetos | Função `renderProjects()` em `js/script.js` |
-| Cores, espaçamentos, fontes e adaptação para celular | `css/style.css` |
-| Foto, thumbnails, fundos e currículo | Pasta `assets/` |
+- HTML5
+- CSS3
+- JavaScript
+- Responsive Design
+- Git
+- GitHub
+- GitHub Pages
 
-### Projetos e thumbnails
+## 📂 Projetos relacionados
 
-Edite a lista `projects` nos dois idiomas em `js/script.js`. Cada projeto define `icon`, `status`, `title`, `desc`, `tags`, `url`, `image` e `linkType`. O valor `linkType: 'code'` faz o link usar o texto de acesso ao código.
+### Jogo da Velha
+Projeto finalizado desenvolvido como prática de lógica e programação.
 
-- `image` indica o caminho da thumbnail, como `assets/jogo_da_velha.jpg`.
-- `imageFit: 'contain'` exibe a imagem inteira com margem interna, como no Jogo da Velha. Sem essa opção, a imagem preenche a área com `object-fit: cover`, podendo sofrer cortes.
-- Em `css/style.css`, `.project-visual .icon` controla a posição e a aparência dos ícones. `right` define a distância da borda direita e `bottom` define a distância da base da thumbnail.
-- `.project-visual .visual-label` controla o status sobre a imagem; `.status` estiliza o status no corpo do card.
+https://github.com/diuelmoura/Jogo_da_Velha
 
-### Currículo em PDF
+### Desafios Live Coding
+Repositório onde organizo meus estudos de algoritmos, estruturas de dados
+e desafios técnicos utilizando principalmente Java.
 
-O botão **Baixar CV (PDF)** aponta para `assets/CV_Diuel_Moura_Atualizado.pdf`. Para atualizar o currículo, substitua esse arquivo. Se mudar o nome, atualize também o `href` do botão em `index.html`.
+https://github.com/diuelmoura/Desafios_Live_Code
 
-## Publicação no GitHub Pages
+## 📬 Contato
 
-O repositório configurado é `diuelmoura/CV_interativo`, e a URL pública indicada nos metadados é `https://diuelmoura.github.io/CV_interativo/`.
+LinkedIn:
+https://www.linkedin.com/in/diuel-moura-672670164/
 
-1. Envie `index.html`, `README.md` e as pastas `css/`, `js/` e `assets/` ao repositório, preservando os nomes e caminhos.
-2. Configure o GitHub Pages para servir a raiz da branch que contém esses arquivos.
-3. Se a URL pública mudar, atualize `canonical`, `og:url`, `og:image`, `og:image:secure_url` e `twitter:image` no `<head>` de `index.html`.
-4. Se substituir `assets/linkedin-preview-v3.png` por uma imagem de outro tamanho ou formato, atualize também `og:image:width`, `og:image:height` e `og:image:type`.
-5. Após publicar, confira as abas, os idiomas, as thumbnails, os links dos projetos e o download do PDF.
+E-mail:
+diuelmoura@gmail.com
